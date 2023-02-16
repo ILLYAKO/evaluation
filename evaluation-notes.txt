@@ -1,0 +1,102 @@
+// Check the correct version of the npm > 8.5.0
+npm --version
+ng version
+
+// Install Angular CLI
+npm install -g @angular/cli
+----
+Reference:
+// New Component
+ng generate component xyz
+//Angular Material
+ng add @angular/material
+//Add PWA Support
+ng add @angular/pwa
+//Add Dependency
+ng add _____
+//Run and Watch Tests
+ng test
+// Build for Production
+ng build
+-----
+// Create a new Angular app
+//npm init @angular appName 
+ng new project-name --routing    // --style=scss
+
+// Navigate to the new directory
+cd project-name
+
+// Angulr Material CSS https://material.angular.io/
+ng add @angular/material
+
+//open Visual Studio Code
+cd project-name
+code .
+
+// Run applcation
+ng serve --open
+
+// Clear the content of src/app/app.component.html
+
+
+// Import the MatSlideToggleModule that you want to display to app.module.ts
+```
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
+@NgModule ({
+  imports: [
+    MatSlideToggleModule,
+  ]
+})
+class AppModule {}
+```
+//Add the <mat-slide-toggle> tag to the app.component.html
+```<mat-slide-toggle>Toggle me!</mat-slide-toggle>```
+// Run local dev server
+ng serve
+
+// Add toolbar https://material.angular.io/components/toolbar/overview in template
+// import MatToolbarModule in app.module.ts
+
+```
+<mat-toolbar>
+
+</mat-toolbar>
+```
+
+// Add Button  in toolbar https://material.angular.io/components/button/overview
+// import MatButtonModule in app.module.ts
+```
+<mat-toolbar color="primary">
+...
+  <button mat-button>Home</button>
+...
+</mat-toolbar>
+```
+// Create new component home, about, page not foud
+ng g component components/home
+
+// Create the application routing module
+ng generate module app-routing --flat --module=app
+
+// Add Routing and Navigation https://angular.io/guide/router
+//  Import in the app.module.ts
+import { Routes, RouterModule } from '@angular/router'; // CLI imports router
+// Define the routes in the app.module.ts
+
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'second-component', component: AboutComponent },
+  { path: '**', component: PageNotFoundComponent },
+];
+
+// add in the end of template
+<div>
+  <!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>
+</div>
+
+
+
+
+
