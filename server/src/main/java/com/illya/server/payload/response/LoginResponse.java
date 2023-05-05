@@ -1,10 +1,10 @@
 package com.illya.server.payload.response;
 
-public class LoginMessage {
+public class LoginResponse {
     String message;
     Boolean status;
 
-    public LoginMessage(String message, Boolean status) {
+    public LoginResponse(String message, Boolean status) {
         this.message = message;
         this.status = status;
     }
@@ -27,7 +27,7 @@ public class LoginMessage {
 
     @Override
     public String toString() {
-        return "LoginMessage{" +
+        return "LoginResponse{" +
                 "message='" + message + '\'' +
                 ", status=" + status +
                 '}';

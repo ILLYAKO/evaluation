@@ -2,7 +2,7 @@ package com.illya.server.controller;
 
 import com.illya.server.dto.LoginDTO;
 import com.illya.server.dto.UserDTO;
-import com.illya.server.payload.response.LoginMessage;
+import com.illya.server.payload.response.LoginResponse;
 import com.illya.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,8 +28,8 @@ public class UserController {
     }
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody LoginDTO loginDTO){
-        LoginMessage loginMessage = userService.loginUser(loginDTO);
-        return ResponseEntity.ok(loginMessage);
+        LoginResponse loginResponse = userService.loginUser(loginDTO);
+        return ResponseEntity.ok(loginResponse);
     }
 
 

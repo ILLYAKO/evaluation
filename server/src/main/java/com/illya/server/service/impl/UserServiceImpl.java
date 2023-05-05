@@ -3,7 +3,7 @@ package com.illya.server.service.impl;
 import com.illya.server.dto.LoginDTO;
 import com.illya.server.dto.UserDTO;
 import com.illya.server.entity.User;
-import com.illya.server.payload.response.LoginMessage;
+import com.illya.server.payload.response.LoginResponse;
 import com.illya.server.repository.UserRepo;
 import com.illya.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,26 +31,29 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public LoginMessage loginUser(LoginDTO loginDTO) {
+    public LoginResponse loginUser(LoginDTO loginDTO) {
+        System.out.println("LoginUserImpl: " + loginDTO.toString());
         String msg ="";
+        System.out.println("loginDTO.getEmail(): " + loginDTO.getEmail());
         User candidate = userRepo.findByEmail(loginDTO.getEmail());
+        System.out.println("User candidate: " + candidate);
         if (candidate != null) {
             String password = loginDTO.getPassword();
             String encodedPassword = candidate.getPassword();
             Boolean isPasswordRight = passwordEncoder.matches(password,encodedPassword);
             if(isPasswordRight){
-                Optional<User> user = userRepo.findOneByEmailAndPassword(loginDTO.getEmail(),loginDTO.getPassword());
+                Optional<User> user = userRepo.findOneByEmailAndPassword(loginDTO.getEmail(),encodedPassword);
                 if(user.isPresent()){
-                    return new LoginMessage("Login Success", true);
+                    return new LoginResponse("Login Success", true);
                 } else {
-                    return new LoginMessage("Login Failed", false);
+                    return new LoginResponse("Login Failed", false);
                 }
             }else {
-                return new LoginMessage("Password not match", false);
+                return new LoginResponse("Password not match", false);
             }
 
         } else {
-            return new LoginMessage("Email not exist", false);
+            return new LoginResponse("Email not exist", false);
         }
     }
 }

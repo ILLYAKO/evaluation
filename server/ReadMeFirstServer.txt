@@ -134,18 +134,23 @@ public class LoginDTO {
 41:36 // Add method loginUser() to UserController
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody LoginDTO loginDTO){
-        LoginMessage loginMessage = userService.loginUser(loginDTO);
-        return ResponseEntity.ok(loginMessage);
+        LoginResponse loginResponse = userService.loginUser(loginDTO);
+        return ResponseEntity.ok(loginResponse);
     }
 42.49 // Crete method loginUser() in UserService interface
-43.19 // Create LoginMessage class in the package payload.response.
+43.19 // Create LoginResponse class in the package payload.response.
 ...
-public class LoginMessage {
+public class LoginResponse {
     String message;
     Boolean status;
     ....
 
-    46:06
+46:14 // Create loginUser method in UserImpl
+---------------------
+51:12 // Create front end
+
+
+
 
 
 
