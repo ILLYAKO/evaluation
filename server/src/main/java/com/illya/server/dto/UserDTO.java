@@ -1,30 +1,25 @@
-package com.illya.server.entity;
+package com.illya.server.dto;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-@Entity // create entity
-@Table(name = "user") // Create table in db
-public class User {
-    @Id
-    @Column(name="user_id", length = 45)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class UserDTO {
     private int userId;
-    @Column(name = "user_name", length = 255)
     private String userName;
-
-    @Column(name="email", length = 255)
     private String email;
-    @Column(name = "password", length = 255)
     private String password;
 
-    public User(int userId, String userName, String email, String password) {
+    public UserDTO(int userId, String userName, String email, String password) {
         this.userId = userId;
         this.userName = userName;
         this.email = email;
         this.password = password;
     }
 
-    public User() {    }
+    public UserDTO() {
+    }
 
     public int getUserId() {
         return userId;
@@ -60,7 +55,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "UserDTO{" +
                 "userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", email='" + email + '\'' +

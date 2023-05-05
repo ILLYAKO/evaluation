@@ -73,6 +73,42 @@ public class UserController {....
 
 14:17 // Create User class in entity package.
 
+20:06 // Create User DTO class
 
+22:43 // Create User Service Interface
 
+public interface UserService {
+    String addUser(UserDTO userDTO);
+}
 
+23:33 Add variable userService with annotation @Autowired to UserController class
+    @Autowired
+    private UserService userService;
+24:49 Create package service.impl
+25:02 Create UserService implementation
+
+26:11 // Create userRepo interface
+@EnableJpaRepositories
+@Repository
+public interface UserRepo extends JpaRepository<User, Integer> {
+    Optional<User> findOneByEmailAndPassword(String email, String password);
+    User findByEmail(String email);
+}
+
+32:10 // Configure application.properties
+spring.application.name=RegistrationLogin
+server.port=8085
+
+spring.jpa.hibernate.ddl-auto=create
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+spring.datasource.url=jdbc:mysql://localhost:3306/evaluation_db?createDatabaseIfNotExist=true
+spring.datasource.username=root
+spring.datasource.password=admin
+
+#jpa vendor adapter configuration
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+spring.jpa.generate-ddl=true
+spring.jpa.show-sql=true
+
+37:05 // Create SecurityConfig class file in config package
