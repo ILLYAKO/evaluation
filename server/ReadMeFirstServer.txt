@@ -112,3 +112,10 @@ spring.jpa.generate-ddl=true
 spring.jpa.show-sql=true
 
 37:05 // Create SecurityConfig class file in config package
+@Configuration
+public class SecurityConfig {
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+}
