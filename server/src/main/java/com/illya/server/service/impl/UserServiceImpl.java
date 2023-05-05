@@ -32,11 +32,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public LoginResponse loginUser(LoginDTO loginDTO) {
-        System.out.println("LoginUserImpl: " + loginDTO.toString());
         String msg ="";
-        System.out.println("loginDTO.getEmail(): " + loginDTO.getEmail());
         User candidate = userRepo.findByEmail(loginDTO.getEmail());
-        System.out.println("User candidate: " + candidate);
         if (candidate != null) {
             String password = loginDTO.getPassword();
             String encodedPassword = candidate.getPassword();
