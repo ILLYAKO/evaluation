@@ -1,8 +1,11 @@
 package com.illya.server.controller;
 
+import com.illya.server.dto.LoginDTO;
 import com.illya.server.dto.UserDTO;
+import com.illya.server.payload.response.LoginMessage;
 import com.illya.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController // REST API
@@ -23,5 +26,12 @@ public class UserController {
         String id = userService.addUser(userDTO);
         return id;
     }
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody LoginDTO loginDTO){
+        LoginMessage loginMessage = userService.loginUser(loginDTO);
+        return ResponseEntity.ok(loginMessage);
+    }
+
+
 
 }

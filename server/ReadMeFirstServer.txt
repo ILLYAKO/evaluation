@@ -119,3 +119,35 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 }
+
+39:59 // Add properties of Annotation to main class
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class) // for development
+
+// ---------------------------------------------
+40:13 // Create Login functionality
+40:32 // Create LoginDTO
+...
+public class LoginDTO {
+    private String email;
+    private String password;
+...
+41:36 // Add method loginUser() to UserController
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody LoginDTO loginDTO){
+        LoginMessage loginMessage = userService.loginUser(loginDTO);
+        return ResponseEntity.ok(loginMessage);
+    }
+42.49 // Crete method loginUser() in UserService interface
+43.19 // Create LoginMessage class in the package payload.response.
+...
+public class LoginMessage {
+    String message;
+    Boolean status;
+    ....
+
+    46:06
+
+
+
+
+
