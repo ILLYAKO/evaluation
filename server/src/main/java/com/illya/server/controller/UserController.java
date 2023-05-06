@@ -9,17 +9,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController // REST API
-@CrossOrigin  // for connect to the front end application
+@CrossOrigin(origins = "http://localhost:4200")   // for connect to the front end application
 @RequestMapping("api/v1/user") // url of request
 
 public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/")
-    public String home() {
-        return "Hello from Evaluation API!!!";
-    }
+//    @GetMapping("/")
+//    public String home() {
+//        return "Hello from Evaluation API!!!";
+//    }
 
     @PostMapping("/save") // Annotation for mapping HTTP POST requests onto specific handler methods
     public String saveUser(@RequestBody UserDTO userDTO) {

@@ -24,7 +24,7 @@ export class RegisterComponent {
       password: this.password,
     };
     this.http
-      .post('http://localhost:8085/api/v1/user', bodyData, {
+      .post('http://localhost:9095/api/v1/user/save', bodyData, {
         responseType: 'text',
       })
       .subscribe((resultData: any) => {
