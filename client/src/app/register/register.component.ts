@@ -7,9 +7,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  userArray: any[] = [];
-  isResultLoaded = false;
-  isUpdateFormActive = false;
+  // userArray: any[] = [];
+  // isResultLoaded = false;
+  // isUpdateFormActive = false;
 
   userName: string = '';
   email: string = '';
