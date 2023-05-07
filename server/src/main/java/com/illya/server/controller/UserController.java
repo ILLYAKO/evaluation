@@ -20,6 +20,10 @@ public class UserController {
     public Iterable<User> findAll(){
         return userService.findAll();
     }
+    @GetMapping("/{id}")
+    public User findById(@PathVariable("id") User user){
+        return user;
+    }
 
     @PostMapping("/save") // Annotation for mapping HTTP POST requests onto specific handler methods
     public String saveUser(@RequestBody UserDTO userDTO) {
