@@ -112,6 +112,7 @@ spring.jpa.generate-ddl=true
 spring.jpa.show-sql=true
 
 37:05 // Create SecurityConfig class file in config package
+
 @Configuration
 public class SecurityConfig {
     @Bean
@@ -119,6 +120,8 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 }
+
+// Add annotation @EnableWebSecurity and extends WebSecurityConfigurerAdapter
 
 39:59 // Add properties of Annotation to main class
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class) // for development

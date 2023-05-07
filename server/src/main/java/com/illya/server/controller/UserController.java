@@ -16,11 +16,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @GetMapping("/")
-//    public String home() {
-//        return "Hello from Evaluation API!!!";
-//    }
-
     @PostMapping("/save") // Annotation for mapping HTTP POST requests onto specific handler methods
     public String saveUser(@RequestBody UserDTO userDTO) {
         String id = userService.addUser(userDTO);
