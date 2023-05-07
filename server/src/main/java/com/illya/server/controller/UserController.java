@@ -2,6 +2,7 @@ package com.illya.server.controller;
 
 import com.illya.server.dto.LoginDTO;
 import com.illya.server.dto.UserDTO;
+import com.illya.server.entity.User;
 import com.illya.server.payload.response.LoginResponse;
 import com.illya.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,10 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @Autowired
     private UserService userService;
+    @GetMapping
+    public Iterable<User> findAll(){
+        return userService.findAll();
+    }
 
     @PostMapping("/save") // Annotation for mapping HTTP POST requests onto specific handler methods
     public String saveUser(@RequestBody UserDTO userDTO) {

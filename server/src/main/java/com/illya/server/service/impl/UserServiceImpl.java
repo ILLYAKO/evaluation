@@ -53,4 +53,9 @@ public class UserServiceImpl implements UserService {
             return new LoginResponse("Email not exist", false);
         }
     }
+
+    @Override
+    public Iterable<User> findAll() {
+        return userRepo.findAll();
+    }
 }
