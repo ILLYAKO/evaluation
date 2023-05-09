@@ -11,22 +11,25 @@ public class User {
     @Column(name = "user_id", length = 45)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
-    @Column(name = "user_name", length = 255)
-    private String userName;
+    @Column(name = "username", length = 255)
+    private String username;
     @Column(name = "email", length = 255)
     private String email;
     @Column(name = "password", length = 255)
     private String password;
+    @Column(name = "role", length = 255)
+    private String role;
     @Column(name = "createdOn")
     private LocalDateTime createdOn;
     @Column(name = "updatedOn")
     private LocalDateTime updatedOn;
 
-    public User(int userId, String userName, String email, String password) {
+    public User(int userId, String username, String email, String password, String role) {
         this.userId = userId;
-        this.userName = userName;
+        this.username = username;
         this.email = email;
         this.password = password;
+        this.role = role;
         this.createdOn = LocalDateTime.now();
     }
 
@@ -41,12 +44,12 @@ public class User {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -65,6 +68,9 @@ public class User {
         this.password = password;
     }
 
+    public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
+
     public LocalDateTime getCreatedOn() {
         return createdOn;
     }
@@ -81,13 +87,16 @@ public class User {
         this.updatedOn = updatedOn;
     }
 
+
+
     @Override
     public String toString() {
         return "User{" +
                 "userId=" + userId +
-                ", userName='" + userName + '\'' +
+                ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
                 ", createdOn=" + createdOn +
                 ", updatedOn=" + updatedOn +
                 '}';

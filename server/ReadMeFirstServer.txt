@@ -16,10 +16,12 @@ Packaging - Jar
 Java - 8
 Dependencies(pom.xml):
   - Spring Data JPA
-  - MySQL Driver
+  - MySQL Driver (or Spring Data MongoDB)
   - Spring Web
   - Spring Security
   - Validation
+  - Lombok (Optional)
+  - Spring Boot DevTools (Optional)
 -- Generate --
 9:22 // Main Java method in the class ...Application with annotation @SpringBootApplication
 //
@@ -136,11 +138,32 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/h2-console/**").permitAll()
-                        .requestMatchers("/api/vi/user").permitAll()
+                        .requestMatchers("/api/v1/user").permitAll()
                         .anyRequest().authenticated())
                 .headers(headers -> headers.frameOptions().sameOrigin())
                 .build();
     }
+
+// Create first user in Application.CommandLineRunner
+    @Bean
+    CommandLineRunner commandLineRunner(UserService userService) {
+        return args -> {
+            userService.addUser(
+                    new UserDTO(
+                            1,
+                            "Illya",
+                            "illya@email.com",
+                            "123"));
+        };
+    }
+
+// Create Jpa User Details Service (https://youtu.be/awcCiqBO36E?t=1058)
+
+// Create Security User (https://youtu.be/awcCiqBO36E?t=1412)
+
+// add Security service to SecurityConfig (https://youtu.be/awcCiqBO36E?t=1777)
+
+// 33:10
 
 39:59 // Add properties of Annotation to main class
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class) // for development
